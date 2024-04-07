@@ -26,7 +26,9 @@ def batch_etl() :
     """
     @task(task_id="start")
     def start() :
-
+        """
+        Dummy operator
+        """
         pass
 
     
@@ -44,14 +46,14 @@ def batch_etl() :
             
             @task_group(group_id = group_id)
             def ingest(table_name : str, meta_data : dict) :
-                conn = meta_data["connection"]
-                file_name = meta_data["file_name"] 
-                dataset_name = meta_data["dataset_name"]
-                columns = meta_data["columns"] 
-                column_mapping = meta_data["column_mapping"]
-                par_dir = f"{TEMP_DIR}/{table_name}"
-                src_file_path = f"{par_dir}/{file_name}"
-                dest_file_path = f"data/{file_name}"
+                conn = meta_data["connection"] # connection 
+                file_name = meta_data["file_name"] # filename
+                dataset_name = meta_data["dataset_name"] # datasetname
+                columns = meta_data["columns"] # columns
+                column_mapping = meta_data["column_mapping"] # mappings
+                par_dir = f"{TEMP_DIR}/{table_name}" # parent directory
+                src_file_path = f"{par_dir}/{file_name}" # src_file after concatenating with parent directory
+                dest_file_path = f"data/{file_name}" # destination path
 
                 download = download_from_kaggle.override(task_id=f"download_files_{table_name}") \
                                         (dataset_name, par_dir)
@@ -80,6 +82,9 @@ def batch_etl() :
      
     @task(task_id = "end", trigger_rule="all_success")
     def end() :
+        """
+        Dummy operator
+        """
         pass
 
     start() >> batch_ingest() >> end()

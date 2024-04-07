@@ -1,7 +1,6 @@
 from airflow.decorators import task, dag, task_group
 from datetime import datetime
 
-
 default_args = {
     "owner": "airflow",
     "start_date": datetime(2024, 1, 1),
@@ -11,7 +10,7 @@ default_args = {
 
 @dag(
     max_active_runs=1, # prevent multi dags
-    schedule_interval=None,
+    schedule_interval=datetime.time_delta(minutes=5),
     catchup=False,
     tags=["is3107"]
 )
@@ -27,6 +26,10 @@ def realtime_etl_pipeline() :
         into the respective datamarts
         - Dashboard 
         - ML
+    """
+
+    """
+        Api ?
     """
 
 
