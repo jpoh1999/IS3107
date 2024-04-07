@@ -1,0 +1,13 @@
+[2024-04-07T04:15:11.734+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: batch_etl.start manual__2024-04-07T04:06:40.341692+00:00 [queued]>
+[2024-04-07T04:15:11.739+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: batch_etl.start manual__2024-04-07T04:06:40.341692+00:00 [queued]>
+[2024-04-07T04:15:11.739+0000] {taskinstance.py:2193} INFO - Starting attempt 2 of 2
+[2024-04-07T04:15:11.744+0000] {taskinstance.py:2217} INFO - Executing <Task(_PythonDecoratedOperator): start> on 2024-04-07 04:06:40.341692+00:00
+[2024-04-07T04:15:11.749+0000] {standard_task_runner.py:60} INFO - Started process 2007 to run task
+[2024-04-07T04:15:11.752+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'batch_etl', 'start', 'manual__2024-04-07T04:06:40.341692+00:00', '--job-id', '119', '--raw', '--subdir', 'DAGS_FOLDER/batch_etl_dag.py', '--cfg-path', '/tmp/tmpegd37esl']
+[2024-04-07T04:15:11.755+0000] {standard_task_runner.py:88} INFO - Job 119: Subtask start
+[2024-04-07T04:15:11.784+0000] {task_command.py:423} INFO - Running <TaskInstance: batch_etl.start manual__2024-04-07T04:06:40.341692+00:00 [running]> on host befaceac7652
+[2024-04-07T04:15:11.823+0000] {taskinstance.py:2513} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='batch_etl' AIRFLOW_CTX_TASK_ID='start' AIRFLOW_CTX_EXECUTION_DATE='2024-04-07T04:06:40.341692+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-04-07T04:06:40.341692+00:00'
+[2024-04-07T04:15:11.825+0000] {python.py:202} INFO - Done. Returned value was: None
+[2024-04-07T04:15:11.829+0000] {taskinstance.py:1149} INFO - Marking task as SUCCESS. dag_id=batch_etl, task_id=start, execution_date=20240407T040640, start_date=20240407T041511, end_date=20240407T041511
+[2024-04-07T04:15:11.851+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2024-04-07T04:15:11.868+0000] {taskinstance.py:3312} INFO - 1 downstream tasks scheduled from follow-on schedule check

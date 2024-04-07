@@ -1,5 +1,5 @@
 from constants import *
-from google.cloud import storage, storage_client
+from google.cloud import storage
 import os
 import logging
 
@@ -45,6 +45,12 @@ def upload_blob(bucket_name, source_file_name, destination_blob_name):
     )
     bucket = client.get_bucket(bucket_name)
     blob = bucket.blob(destination_blob_name)
+    # Check if the blob already exists
+    if blob.exists():
+        logging.info('Blob {} already exists. Skipping upload.'.format(destination_blob_name))
+        return
+    
+    # Upload the file
     blob.upload_from_filename(source_file_name)
     logging.info('File {} uploaded to {}.'.format(
         source_file_name,

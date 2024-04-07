@@ -1,0 +1,16 @@
+[2024-04-07T04:40:10.788+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: teardown.delete_databases manual__2024-04-07T04:40:08.645636+00:00 [queued]>
+[2024-04-07T04:40:10.792+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: teardown.delete_databases manual__2024-04-07T04:40:08.645636+00:00 [queued]>
+[2024-04-07T04:40:10.792+0000] {taskinstance.py:2193} INFO - Starting attempt 1 of 1
+[2024-04-07T04:40:10.798+0000] {taskinstance.py:2217} INFO - Executing <Task(_PythonDecoratedOperator): delete_databases> on 2024-04-07 04:40:08.645636+00:00
+[2024-04-07T04:40:10.802+0000] {standard_task_runner.py:60} INFO - Started process 3872 to run task
+[2024-04-07T04:40:10.804+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'teardown', 'delete_databases', 'manual__2024-04-07T04:40:08.645636+00:00', '--job-id', '197', '--raw', '--subdir', 'DAGS_FOLDER/teardown.py', '--cfg-path', '/tmp/tmp7kj7k71f']
+[2024-04-07T04:40:10.807+0000] {standard_task_runner.py:88} INFO - Job 197: Subtask delete_databases
+[2024-04-07T04:40:10.838+0000] {task_command.py:423} INFO - Running <TaskInstance: teardown.delete_databases manual__2024-04-07T04:40:08.645636+00:00 [running]> on host befaceac7652
+[2024-04-07T04:40:10.872+0000] {taskinstance.py:2513} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='teardown' AIRFLOW_CTX_TASK_ID='delete_databases' AIRFLOW_CTX_EXECUTION_DATE='2024-04-07T04:40:08.645636+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-04-07T04:40:08.645636+00:00'
+[2024-04-07T04:40:10.928+0000] {warehouse.py:54} ERROR - Database already exists!!
+[2024-04-07T04:40:10.965+0000] {warehouse.py:54} ERROR - Database already exists!!
+[2024-04-07T04:40:11.004+0000] {warehouse.py:54} ERROR - Database already exists!!
+[2024-04-07T04:40:11.004+0000] {python.py:202} INFO - Done. Returned value was: None
+[2024-04-07T04:40:11.012+0000] {taskinstance.py:1149} INFO - Marking task as SUCCESS. dag_id=teardown, task_id=delete_databases, execution_date=20240407T044008, start_date=20240407T044010, end_date=20240407T044011
+[2024-04-07T04:40:11.026+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2024-04-07T04:40:11.035+0000] {taskinstance.py:3312} INFO - 0 downstream tasks scheduled from follow-on schedule check

@@ -54,7 +54,6 @@ x-airflow-common:
   environment:
     &airflow-common-env
     AIRFLOW__CORE__EXECUTOR: CeleryExecutor
-    # AIRFLOW_DATABASE__SQL_ALCHEMY_CONN: mysql+mysqlconnector://root:Peda53mato@localhost:3306/datawarehouse'
     AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
     AIRFLOW__CELERY__RESULT_BACKEND: db+postgresql://airflow:airflow@postgres/airflow
     AIRFLOW__CELERY__BROKER_URL: redis://:@redis:6379/0
@@ -76,6 +75,9 @@ x-airflow-common:
     - ${AIRFLOW_PROJ_DIR:-.}/config:/opt/airflow/config
     - ${AIRFLOW_PROJ_DIR:-.}/plugins:/opt/airflow/plugins
     - ${AIRFLOW_PROJ_DIR:-.}/data:/opt/airflow/data
+    - ${AIRFLOW_PROJ_DIR:-.}/.google:/home/airflow/.google
+    - ${AIRFLOW_PROJ_DIR:-.}/.kaggle:/home/airflow/.kaggle
+
   user: "${AIRFLOW_UID:-50000}:0"
   depends_on:
     &airflow-common-depends-on
@@ -282,4 +284,6 @@ services:
         condition: service_completed_successfully
 
 volumes:
+    postgres-db-volume:
+
  

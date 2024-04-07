@@ -1,0 +1,28 @@
+[2024-04-07T04:05:54.568+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: setup.set_up_datawarehouse manual__2024-04-07T03:54:58.082620+00:00 [queued]>
+[2024-04-07T04:05:54.572+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: setup.set_up_datawarehouse manual__2024-04-07T03:54:58.082620+00:00 [queued]>
+[2024-04-07T04:05:54.572+0000] {taskinstance.py:2193} INFO - Starting attempt 6 of 6
+[2024-04-07T04:05:54.577+0000] {taskinstance.py:2217} INFO - Executing <Task(_PythonDecoratedOperator): set_up_datawarehouse> on 2024-04-07 03:54:58.082620+00:00
+[2024-04-07T04:05:54.580+0000] {standard_task_runner.py:60} INFO - Started process 1442 to run task
+[2024-04-07T04:05:54.582+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'setup', 'set_up_datawarehouse', 'manual__2024-04-07T03:54:58.082620+00:00', '--job-id', '95', '--raw', '--subdir', 'DAGS_FOLDER/setup.py', '--cfg-path', '/tmp/tmp96fiy90t']
+[2024-04-07T04:05:54.584+0000] {standard_task_runner.py:88} INFO - Job 95: Subtask set_up_datawarehouse
+[2024-04-07T04:05:54.606+0000] {task_command.py:423} INFO - Running <TaskInstance: setup.set_up_datawarehouse manual__2024-04-07T03:54:58.082620+00:00 [running]> on host befaceac7652
+[2024-04-07T04:05:54.637+0000] {taskinstance.py:2513} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='setup' AIRFLOW_CTX_TASK_ID='set_up_datawarehouse' AIRFLOW_CTX_EXECUTION_DATE='2024-04-07T03:54:58.082620+00:00' AIRFLOW_CTX_TRY_NUMBER='6' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-04-07T03:54:58.082620+00:00'
+[2024-04-07T04:05:54.688+0000] {warehouse.py:39} ERROR - Database already exists!!
+[2024-04-07T04:05:54.688+0000] {warehouse.py:60} INFO - {'host': 'host.docker.internal', 'user': 'root', 'password': '***', 'database': 'dashboard'}
+[2024-04-07T04:05:54.729+0000] {warehouse.py:80} INFO - SUCCESSFULLY EXECUTED QUERIES
+[2024-04-07T04:05:54.730+0000] {warehouse.py:60} INFO - {'host': 'host.docker.internal', 'user': 'root', 'password': '***', 'database': 'dashboard'}
+[2024-04-07T04:05:54.777+0000] {warehouse.py:80} INFO - SUCCESSFULLY EXECUTED QUERIES
+[2024-04-07T04:05:54.801+0000] {warehouse.py:39} ERROR - Database already exists!!
+[2024-04-07T04:05:54.802+0000] {warehouse.py:60} INFO - {'host': 'host.docker.internal', 'user': 'root', 'password': '***', 'database': 'machinelearning'}
+[2024-04-07T04:05:54.830+0000] {warehouse.py:80} INFO - SUCCESSFULLY EXECUTED QUERIES
+[2024-04-07T04:05:54.831+0000] {warehouse.py:60} INFO - {'host': 'host.docker.internal', 'user': 'root', 'password': '***', 'database': 'machinelearning'}
+[2024-04-07T04:05:54.868+0000] {warehouse.py:80} INFO - SUCCESSFULLY EXECUTED QUERIES
+[2024-04-07T04:05:54.891+0000] {warehouse.py:39} ERROR - Database already exists!!
+[2024-04-07T04:05:54.892+0000] {warehouse.py:60} INFO - {'host': 'host.docker.internal', 'user': 'root', 'password': '***', 'database': 'datawarehouse'}
+[2024-04-07T04:05:54.924+0000] {warehouse.py:80} INFO - SUCCESSFULLY EXECUTED QUERIES
+[2024-04-07T04:05:54.925+0000] {warehouse.py:60} INFO - {'host': 'host.docker.internal', 'user': 'root', 'password': '***', 'database': 'datawarehouse'}
+[2024-04-07T04:05:54.967+0000] {warehouse.py:80} INFO - SUCCESSFULLY EXECUTED QUERIES
+[2024-04-07T04:05:54.967+0000] {python.py:202} INFO - Done. Returned value was: None
+[2024-04-07T04:05:54.972+0000] {taskinstance.py:1149} INFO - Marking task as SUCCESS. dag_id=setup, task_id=set_up_datawarehouse, execution_date=20240407T035458, start_date=20240407T040554, end_date=20240407T040554
+[2024-04-07T04:05:55.009+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2024-04-07T04:05:55.021+0000] {taskinstance.py:3312} INFO - 1 downstream tasks scheduled from follow-on schedule check

@@ -1,6 +1,9 @@
 from kaggle.api.kaggle_api_extended import KaggleApi
+from airflow.decorators import task
 import os
+from database.warehouse import *
 
+@task(task_id = "download_file")
 def download_from_kaggle(dataset: str, dirpath : str) :
     """
     Download the kaggle dataset into our local directory
@@ -15,3 +18,10 @@ def download_from_kaggle(dataset: str, dirpath : str) :
 # TODO : KIV
 def download_from_tmdb():
     pass
+
+
+def load_to_sql() :
+
+    
+
+    load_from_csv_batch_sql()

@@ -1,0 +1,13 @@
+[2024-04-07T03:55:54.676+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: setup.start manual__2024-04-07T03:54:58.082620+00:00 [queued]>
+[2024-04-07T03:55:54.680+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: setup.start manual__2024-04-07T03:54:58.082620+00:00 [queued]>
+[2024-04-07T03:55:54.680+0000] {taskinstance.py:2193} INFO - Starting attempt 2 of 2
+[2024-04-07T03:55:54.686+0000] {taskinstance.py:2217} INFO - Executing <Task(_PythonDecoratedOperator): start> on 2024-04-07 03:54:58.082620+00:00
+[2024-04-07T03:55:54.691+0000] {standard_task_runner.py:60} INFO - Started process 1236 to run task
+[2024-04-07T03:55:54.696+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'setup', 'start', 'manual__2024-04-07T03:54:58.082620+00:00', '--job-id', '76', '--raw', '--subdir', 'DAGS_FOLDER/setup.py', '--cfg-path', '/tmp/tmpbk6gbj7f']
+[2024-04-07T03:55:54.699+0000] {standard_task_runner.py:88} INFO - Job 76: Subtask start
+[2024-04-07T03:55:54.734+0000] {task_command.py:423} INFO - Running <TaskInstance: setup.start manual__2024-04-07T03:54:58.082620+00:00 [running]> on host befaceac7652
+[2024-04-07T03:55:54.772+0000] {taskinstance.py:2513} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='setup' AIRFLOW_CTX_TASK_ID='start' AIRFLOW_CTX_EXECUTION_DATE='2024-04-07T03:54:58.082620+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-04-07T03:54:58.082620+00:00'
+[2024-04-07T03:55:54.776+0000] {python.py:202} INFO - Done. Returned value was: None
+[2024-04-07T03:55:54.782+0000] {taskinstance.py:1149} INFO - Marking task as SUCCESS. dag_id=setup, task_id=start, execution_date=20240407T035458, start_date=20240407T035554, end_date=20240407T035554
+[2024-04-07T03:55:54.797+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2024-04-07T03:55:54.810+0000] {taskinstance.py:3312} INFO - 1 downstream tasks scheduled from follow-on schedule check

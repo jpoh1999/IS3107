@@ -1,0 +1,15 @@
+[2024-04-07T03:09:11.965+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: batch_etl.ingest manual__2024-04-07T02:56:27.161905+00:00 [queued]>
+[2024-04-07T03:09:11.969+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: batch_etl.ingest manual__2024-04-07T02:56:27.161905+00:00 [queued]>
+[2024-04-07T03:09:11.969+0000] {taskinstance.py:2193} INFO - Starting attempt 3 of 3
+[2024-04-07T03:09:11.975+0000] {taskinstance.py:2217} INFO - Executing <Task(_PythonDecoratedOperator): ingest> on 2024-04-07 02:56:27.161905+00:00
+[2024-04-07T03:09:11.979+0000] {standard_task_runner.py:60} INFO - Started process 1002 to run task
+[2024-04-07T03:09:11.981+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'batch_etl', 'ingest', 'manual__2024-04-07T02:56:27.161905+00:00', '--job-id', '25', '--raw', '--subdir', 'DAGS_FOLDER/batch_etl_dag.py', '--cfg-path', '/tmp/tmp4qmqssyv']
+[2024-04-07T03:09:11.982+0000] {standard_task_runner.py:88} INFO - Job 25: Subtask ingest
+[2024-04-07T03:09:12.002+0000] {task_command.py:423} INFO - Running <TaskInstance: batch_etl.ingest manual__2024-04-07T02:56:27.161905+00:00 [running]> on host 0e5532b210db
+[2024-04-07T03:09:12.035+0000] {taskinstance.py:2513} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='batch_etl' AIRFLOW_CTX_TASK_ID='ingest' AIRFLOW_CTX_EXECUTION_DATE='2024-04-07T02:56:27.161905+00:00' AIRFLOW_CTX_TRY_NUMBER='3' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-04-07T02:56:27.161905+00:00'
+[2024-04-07T03:09:12.036+0000] {batch_etl_dag.py:71} ERROR - The key 'download_files_shivamb/netflix-shows' has to be made of alphanumeric characters, dashes, dots and underscores exclusively
+[2024-04-07T03:09:12.036+0000] {batch_etl_dag.py:72} INFO - DatasetName:shivamb/netflix-shows
+[2024-04-07T03:09:12.037+0000] {python.py:202} INFO - Done. Returned value was: []
+[2024-04-07T03:09:12.045+0000] {taskinstance.py:1149} INFO - Marking task as SUCCESS. dag_id=batch_etl, task_id=ingest, execution_date=20240407T025627, start_date=20240407T030911, end_date=20240407T030912
+[2024-04-07T03:09:12.080+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2024-04-07T03:09:12.090+0000] {taskinstance.py:3312} INFO - 1 downstream tasks scheduled from follow-on schedule check

@@ -2,3 +2,8 @@ pandas
 mysql-connector-python
 sqlalchemy
 mysqlclient
+fastavro
+rec_avro
+kaggle
+google-cloud
+google-cloud-storage

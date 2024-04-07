@@ -1,0 +1,14 @@
+[2024-04-07T03:57:01.291+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: setup.set_up_datalake manual__2024-04-07T03:54:58.082620+00:00 [queued]>
+[2024-04-07T03:57:01.295+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: setup.set_up_datalake manual__2024-04-07T03:54:58.082620+00:00 [queued]>
+[2024-04-07T03:57:01.295+0000] {taskinstance.py:2193} INFO - Starting attempt 3 of 3
+[2024-04-07T03:57:01.300+0000] {taskinstance.py:2217} INFO - Executing <Task(_PythonDecoratedOperator): set_up_datalake> on 2024-04-07 03:54:58.082620+00:00
+[2024-04-07T03:57:01.304+0000] {standard_task_runner.py:60} INFO - Started process 1275 to run task
+[2024-04-07T03:57:01.306+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'setup', 'set_up_datalake', 'manual__2024-04-07T03:54:58.082620+00:00', '--job-id', '84', '--raw', '--subdir', 'DAGS_FOLDER/setup.py', '--cfg-path', '/tmp/tmpxlc9ofel']
+[2024-04-07T03:57:01.307+0000] {standard_task_runner.py:88} INFO - Job 84: Subtask set_up_datalake
+[2024-04-07T03:57:01.347+0000] {task_command.py:423} INFO - Running <TaskInstance: setup.set_up_datalake manual__2024-04-07T03:54:58.082620+00:00 [running]> on host befaceac7652
+[2024-04-07T03:57:01.391+0000] {taskinstance.py:2513} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='setup' AIRFLOW_CTX_TASK_ID='set_up_datalake' AIRFLOW_CTX_EXECUTION_DATE='2024-04-07T03:54:58.082620+00:00' AIRFLOW_CTX_TRY_NUMBER='3' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-04-07T03:54:58.082620+00:00'
+[2024-04-07T03:57:02.071+0000] {setup.py:44} ERROR - BUCKET ALREADY CREATE!! SKIPPING-
+[2024-04-07T03:57:02.072+0000] {python.py:202} INFO - Done. Returned value was: None
+[2024-04-07T03:57:02.076+0000] {taskinstance.py:1149} INFO - Marking task as SUCCESS. dag_id=setup, task_id=set_up_datalake, execution_date=20240407T035458, start_date=20240407T035701, end_date=20240407T035702
+[2024-04-07T03:57:02.115+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2024-04-07T03:57:02.126+0000] {taskinstance.py:3312} INFO - 1 downstream tasks scheduled from follow-on schedule check

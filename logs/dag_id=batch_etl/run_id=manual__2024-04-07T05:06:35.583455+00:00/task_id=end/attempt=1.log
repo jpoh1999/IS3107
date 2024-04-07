@@ -1,0 +1,13 @@
+[2024-04-07T05:07:16.513+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: batch_etl.end manual__2024-04-07T05:06:35.583455+00:00 [queued]>
+[2024-04-07T05:07:16.518+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: batch_etl.end manual__2024-04-07T05:06:35.583455+00:00 [queued]>
+[2024-04-07T05:07:16.518+0000] {taskinstance.py:2193} INFO - Starting attempt 1 of 1
+[2024-04-07T05:07:16.523+0000] {taskinstance.py:2217} INFO - Executing <Task(_PythonDecoratedOperator): end> on 2024-04-07 05:06:35.583455+00:00
+[2024-04-07T05:07:16.526+0000] {standard_task_runner.py:60} INFO - Started process 7265 to run task
+[2024-04-07T05:07:16.528+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'batch_etl', 'end', 'manual__2024-04-07T05:06:35.583455+00:00', '--job-id', '365', '--raw', '--subdir', 'DAGS_FOLDER/batch_etl_dag.py', '--cfg-path', '/tmp/tmp3_zb767k']
+[2024-04-07T05:07:16.530+0000] {standard_task_runner.py:88} INFO - Job 365: Subtask end
+[2024-04-07T05:07:16.551+0000] {task_command.py:423} INFO - Running <TaskInstance: batch_etl.end manual__2024-04-07T05:06:35.583455+00:00 [running]> on host befaceac7652
+[2024-04-07T05:07:16.587+0000] {taskinstance.py:2513} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='batch_etl' AIRFLOW_CTX_TASK_ID='end' AIRFLOW_CTX_EXECUTION_DATE='2024-04-07T05:06:35.583455+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-04-07T05:06:35.583455+00:00'
+[2024-04-07T05:07:16.588+0000] {python.py:202} INFO - Done. Returned value was: None
+[2024-04-07T05:07:16.593+0000] {taskinstance.py:1149} INFO - Marking task as SUCCESS. dag_id=batch_etl, task_id=end, execution_date=20240407T050635, start_date=20240407T050716, end_date=20240407T050716
+[2024-04-07T05:07:16.625+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2024-04-07T05:07:16.635+0000] {taskinstance.py:3312} INFO - 0 downstream tasks scheduled from follow-on schedule check

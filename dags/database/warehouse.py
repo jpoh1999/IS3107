@@ -6,7 +6,22 @@ import mysql.connector
 from dateutil.relativedelta import relativedelta
 from typing import Callable, Any
 
-def create_drop_new_database(db_params: dict, query : str) :
+def set_up_global_infile(db_params : dict) :
+    """
+    Set up local_infile to load to big data into sql server
+
+    Args : 
+        - db_params : (dict) db params
+    
+    Expected Outcome :
+        - local_infile set up for database
+    """
+    set_up_global_infile = "SET GLOBAL local_infile = true;"
+
+    my_sql_connector_query(conn_params=db_params, query_list=[set_up_global_infile])
+
+
+def create_drop_new_database(db_params: dict, create_or_drop : str) :
     """
     Create a new database based on database parameters
 
@@ -16,10 +31,11 @@ def create_drop_new_database(db_params: dict, query : str) :
     Expected Outcome :
         - A new database is created
     """
-    database_name = db_params.pop("database")
+    conn_params = db_params.copy()
+    database_name = conn_params.pop("database")
 
     conn = mysql.connector.connect(
-        **db_params
+        **conn_params
     )
     
     # get the connection cursor
@@ -28,16 +44,16 @@ def create_drop_new_database(db_params: dict, query : str) :
     
     try:  
         #creating or dropping a new database  
-        cursor.execute(f"{query} database {database_name}")  
+        cursor.execute(f"{create_or_drop} IF EXISTS database {database_name}")  
     
         #getting the list of all the databases which will now include the new database PythonDB  
-        cursor.execute("show databases")  
+        # cursor.execute("show databases")  
 
       
     except:  
-        logging.error("Error while creating/dropping databases!")
+        logging.error("Database already exists!!")
         # rollback changes on error
-        conn.rollback()  
+        # conn.rollback()  
 
 def my_sql_connector_query(conn_params: dict, query_list: list):
     """
@@ -56,6 +72,7 @@ def my_sql_connector_query(conn_params: dict, query_list: list):
 
     """
     try:
+        logging.info(conn_params)
         db = mysql.connector.connect(
             **conn_params
         )  # Connect one time to DBWAREHOUSE using mysql connector
@@ -78,25 +95,60 @@ def my_sql_connector_query(conn_params: dict, query_list: list):
         logging.info("SUCCESSFULLY EXECUTED QUERIES")
 
 
-def drop_create_tables(conn_params: dict, drop_queries: list, create_queries : list, **context):
+def drop_create_tables(conn_params: dict, create_queries : list, drop_queries : list):
     """
-    Drop tables if exists in DBWAREHOUSE using mysql.connector
-    Precondition : DBWAREHOUSE SCHEMA is already created in the host machine
+    Drop tables if exists in database using mysql.connector
+    Precondition : database is already created in the host machine
     Args :
-        - conn_params : (dict) connection parameters
-        - drop_queries : (list) list of queries to drop tables
+        - conn_params : (dict) connection parameters to database
+        - create_queries : (list) list of create queries with the schemas defined
+        - drop_queries : (list) list of drop queries
     Expected outcome :
-        - Drop tables {SALES, STORE, PRODUCT, TIME, FREIGHT}
-          if created in DBWAREHOUSE
+        - Drop tables {...}
+          if created in database
+        - Create tables {...} after
+    """
+    
+    
+    my_sql_connector_query(conn_params, drop_queries)
+    my_sql_connector_query(conn_params, create_queries)
+
+    return
+
+def load_from_csv_batch_sql(conn_params : dict, file_name : str, table_name : str, columns : list, column_mapping : dict):
+    """
+        Generate the load queries sql for each table dynamically
+
+        Args :
+            - conn_params : (dict) connection parameters to database
+            - file_name : (str) the name of the file
+            - table_name : (str) name of the table 
+            - columns : (list) the columns of the csv file
+            - column_mapping : (dict) the columns to keep in the sql database
     """
 
-    ti = context["ti"]
-    start_date = ti.xcom_pull(task_ids="start", key="dag_date")
-    first_record = ti.xcom_pull(task_ids="start", key="first_record")
+    # Generate the fields part of the query
+    fields_part = ', '.join([f'@{column}' for column in columns])
 
-    if first_record:
-        logging.info(f"DROPPING TABLES... ON {start_date}")
-        my_sql_connector_query(conn_params, drop_queries)
-        my_sql_connector_query(conn_params, create_queries)
+    # Remove last
+    
+    # Generate the SET part of the query
+    set_part = ', '.join([f'{column}=@{column_mapping[column]}' for column in column_mapping.keys()])
+
+    logging.info(set_part)
+    # Generate the full query
+    load_query = f"""
+        LOAD DATA LOCAL INFILE '{file_name}'
+        INTO TABLE 
+            {table_name}
+        IGNORE 1 LINES
+        ({fields_part}) 
+        SET 
+            {set_part}
+        ;
+    """
+    logging.info(load_query)
+    
+    my_sql_connector_query(conn_params=conn_params, query_list=[load_query])
 
     return
