@@ -17,6 +17,8 @@ docker compose down -v
 ```
 
 # Dag Structure
+Run in this sequence : setup >> batch_pipeline >> teardown
+<img width="1655" alt="image" src="https://github.com/jpoh1999/IS3107/assets/157945682/bd713ed6-aab2-4ffe-8dab-5646ac51d461">
 
 # CurrentDagStructure
 The picture below shows the current dag structure
