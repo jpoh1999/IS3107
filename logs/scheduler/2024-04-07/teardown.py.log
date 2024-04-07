@@ -1156,3 +1156,73 @@ SyntaxError: positional argument follows keyword argument
 [2024-04-07T05:15:04.559+0000] {logging_mixin.py:188} INFO - [2024-04-07T05:15:04.558+0000] {dag.py:3047} INFO - Sync 1 DAGs
 [2024-04-07T05:15:04.567+0000] {logging_mixin.py:188} INFO - [2024-04-07T05:15:04.566+0000] {dag.py:3834} INFO - Setting next_dagrun for teardown to None, run_after=None
 [2024-04-07T05:15:04.577+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/teardown.py took 0.409 seconds
+[2024-04-07T05:20:26.939+0000] {processor.py:161} INFO - Started process (PID=6946) to work on /opt/airflow/dags/teardown.py
+[2024-04-07T05:20:26.984+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/teardown.py for tasks to queue
+[2024-04-07T05:20:26.996+0000] {logging_mixin.py:188} INFO - [2024-04-07T05:20:26.995+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/teardown.py
+[2024-04-07T05:20:27.632+0000] {processor.py:840} INFO - DAG(s) 'teardown' retrieved from /opt/airflow/dags/teardown.py
+[2024-04-07T05:20:27.650+0000] {logging_mixin.py:188} INFO - [2024-04-07T05:20:27.649+0000] {dag.py:3047} INFO - Sync 1 DAGs
+[2024-04-07T05:20:27.679+0000] {logging_mixin.py:188} INFO - [2024-04-07T05:20:27.679+0000] {dag.py:3834} INFO - Setting next_dagrun for teardown to None, run_after=None
+[2024-04-07T05:20:27.724+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/teardown.py took 0.867 seconds
+[2024-04-07T05:20:57.862+0000] {processor.py:161} INFO - Started process (PID=6973) to work on /opt/airflow/dags/teardown.py
+[2024-04-07T05:20:57.864+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/teardown.py for tasks to queue
+[2024-04-07T05:20:57.866+0000] {logging_mixin.py:188} INFO - [2024-04-07T05:20:57.865+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/teardown.py
+[2024-04-07T05:20:58.252+0000] {processor.py:840} INFO - DAG(s) 'teardown' retrieved from /opt/airflow/dags/teardown.py
+[2024-04-07T05:20:58.264+0000] {logging_mixin.py:188} INFO - [2024-04-07T05:20:58.264+0000] {dag.py:3047} INFO - Sync 1 DAGs
+[2024-04-07T05:20:58.269+0000] {logging_mixin.py:188} INFO - [2024-04-07T05:20:58.269+0000] {dag.py:3834} INFO - Setting next_dagrun for teardown to None, run_after=None
+[2024-04-07T05:20:58.277+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/teardown.py took 0.421 seconds
+[2024-04-07T05:21:28.942+0000] {processor.py:161} INFO - Started process (PID=6999) to work on /opt/airflow/dags/teardown.py
+[2024-04-07T05:21:28.944+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/teardown.py for tasks to queue
+[2024-04-07T05:21:28.946+0000] {logging_mixin.py:188} INFO - [2024-04-07T05:21:28.945+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/teardown.py
+[2024-04-07T05:21:29.369+0000] {processor.py:840} INFO - DAG(s) 'teardown' retrieved from /opt/airflow/dags/teardown.py
+[2024-04-07T05:21:29.405+0000] {logging_mixin.py:188} INFO - [2024-04-07T05:21:29.404+0000] {dag.py:3047} INFO - Sync 1 DAGs
+[2024-04-07T05:21:29.413+0000] {logging_mixin.py:188} INFO - [2024-04-07T05:21:29.412+0000] {dag.py:3834} INFO - Setting next_dagrun for teardown to None, run_after=None
+[2024-04-07T05:21:29.423+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/teardown.py took 0.489 seconds
+[2024-04-07T05:21:59.752+0000] {processor.py:161} INFO - Started process (PID=7026) to work on /opt/airflow/dags/teardown.py
+[2024-04-07T05:21:59.754+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/teardown.py for tasks to queue
+[2024-04-07T05:21:59.755+0000] {logging_mixin.py:188} INFO - [2024-04-07T05:21:59.754+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/teardown.py
+[2024-04-07T05:22:00.334+0000] {processor.py:840} INFO - DAG(s) 'teardown' retrieved from /opt/airflow/dags/teardown.py
+[2024-04-07T05:22:00.354+0000] {logging_mixin.py:188} INFO - [2024-04-07T05:22:00.354+0000] {dag.py:3047} INFO - Sync 1 DAGs
+[2024-04-07T05:22:00.366+0000] {logging_mixin.py:188} INFO - [2024-04-07T05:22:00.366+0000] {dag.py:3834} INFO - Setting next_dagrun for teardown to None, run_after=None
+[2024-04-07T05:22:00.375+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/teardown.py took 0.629 seconds
+[2024-04-07T05:22:30.770+0000] {processor.py:161} INFO - Started process (PID=7052) to work on /opt/airflow/dags/teardown.py
+[2024-04-07T05:22:30.772+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/teardown.py for tasks to queue
+[2024-04-07T05:22:30.774+0000] {logging_mixin.py:188} INFO - [2024-04-07T05:22:30.773+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/teardown.py
+[2024-04-07T05:22:31.449+0000] {processor.py:840} INFO - DAG(s) 'teardown' retrieved from /opt/airflow/dags/teardown.py
+[2024-04-07T05:22:31.483+0000] {logging_mixin.py:188} INFO - [2024-04-07T05:22:31.483+0000] {dag.py:3047} INFO - Sync 1 DAGs
+[2024-04-07T05:22:31.490+0000] {logging_mixin.py:188} INFO - [2024-04-07T05:22:31.490+0000] {dag.py:3834} INFO - Setting next_dagrun for teardown to None, run_after=None
+[2024-04-07T05:22:31.502+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/teardown.py took 0.737 seconds
+[2024-04-07T05:23:01.926+0000] {processor.py:161} INFO - Started process (PID=7079) to work on /opt/airflow/dags/teardown.py
+[2024-04-07T05:23:01.931+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/teardown.py for tasks to queue
+[2024-04-07T05:23:01.933+0000] {logging_mixin.py:188} INFO - [2024-04-07T05:23:01.932+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/teardown.py
+[2024-04-07T05:23:02.531+0000] {processor.py:840} INFO - DAG(s) 'teardown' retrieved from /opt/airflow/dags/teardown.py
+[2024-04-07T05:23:02.561+0000] {logging_mixin.py:188} INFO - [2024-04-07T05:23:02.561+0000] {dag.py:3047} INFO - Sync 1 DAGs
+[2024-04-07T05:23:02.569+0000] {logging_mixin.py:188} INFO - [2024-04-07T05:23:02.569+0000] {dag.py:3834} INFO - Setting next_dagrun for teardown to None, run_after=None
+[2024-04-07T05:23:02.582+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/teardown.py took 0.667 seconds
+[2024-04-07T05:23:32.962+0000] {processor.py:161} INFO - Started process (PID=7106) to work on /opt/airflow/dags/teardown.py
+[2024-04-07T05:23:32.963+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/teardown.py for tasks to queue
+[2024-04-07T05:23:32.965+0000] {logging_mixin.py:188} INFO - [2024-04-07T05:23:32.964+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/teardown.py
+[2024-04-07T05:23:33.499+0000] {processor.py:840} INFO - DAG(s) 'teardown' retrieved from /opt/airflow/dags/teardown.py
+[2024-04-07T05:23:33.534+0000] {logging_mixin.py:188} INFO - [2024-04-07T05:23:33.534+0000] {dag.py:3047} INFO - Sync 1 DAGs
+[2024-04-07T05:23:33.543+0000] {logging_mixin.py:188} INFO - [2024-04-07T05:23:33.542+0000] {dag.py:3834} INFO - Setting next_dagrun for teardown to None, run_after=None
+[2024-04-07T05:23:33.553+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/teardown.py took 0.600 seconds
+[2024-04-07T05:24:04.065+0000] {processor.py:161} INFO - Started process (PID=7133) to work on /opt/airflow/dags/teardown.py
+[2024-04-07T05:24:04.072+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/teardown.py for tasks to queue
+[2024-04-07T05:24:04.074+0000] {logging_mixin.py:188} INFO - [2024-04-07T05:24:04.073+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/teardown.py
+[2024-04-07T05:24:04.593+0000] {processor.py:840} INFO - DAG(s) 'teardown' retrieved from /opt/airflow/dags/teardown.py
+[2024-04-07T05:24:04.610+0000] {logging_mixin.py:188} INFO - [2024-04-07T05:24:04.610+0000] {dag.py:3047} INFO - Sync 1 DAGs
+[2024-04-07T05:24:04.617+0000] {logging_mixin.py:188} INFO - [2024-04-07T05:24:04.617+0000] {dag.py:3834} INFO - Setting next_dagrun for teardown to None, run_after=None
+[2024-04-07T05:24:04.633+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/teardown.py took 0.585 seconds
+[2024-04-07T05:24:35.039+0000] {processor.py:161} INFO - Started process (PID=7160) to work on /opt/airflow/dags/teardown.py
+[2024-04-07T05:24:35.042+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/teardown.py for tasks to queue
+[2024-04-07T05:24:35.045+0000] {logging_mixin.py:188} INFO - [2024-04-07T05:24:35.044+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/teardown.py
+[2024-04-07T05:24:35.547+0000] {processor.py:840} INFO - DAG(s) 'teardown' retrieved from /opt/airflow/dags/teardown.py
+[2024-04-07T05:24:35.567+0000] {logging_mixin.py:188} INFO - [2024-04-07T05:24:35.567+0000] {dag.py:3047} INFO - Sync 1 DAGs
+[2024-04-07T05:24:35.578+0000] {logging_mixin.py:188} INFO - [2024-04-07T05:24:35.577+0000] {dag.py:3834} INFO - Setting next_dagrun for teardown to None, run_after=None
+[2024-04-07T05:24:35.592+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/teardown.py took 0.566 seconds
+[2024-04-07T05:25:06.016+0000] {processor.py:161} INFO - Started process (PID=7187) to work on /opt/airflow/dags/teardown.py
+[2024-04-07T05:25:06.022+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/teardown.py for tasks to queue
+[2024-04-07T05:25:06.024+0000] {logging_mixin.py:188} INFO - [2024-04-07T05:25:06.023+0000] {dagbag.py:540} INFO - Filling up the DagBag from /opt/airflow/dags/teardown.py
+[2024-04-07T05:25:06.514+0000] {processor.py:840} INFO - DAG(s) 'teardown' retrieved from /opt/airflow/dags/teardown.py
+[2024-04-07T05:25:06.537+0000] {logging_mixin.py:188} INFO - [2024-04-07T05:25:06.537+0000] {dag.py:3047} INFO - Sync 1 DAGs
+[2024-04-07T05:25:06.544+0000] {logging_mixin.py:188} INFO - [2024-04-07T05:25:06.544+0000] {dag.py:3834} INFO - Setting next_dagrun for teardown to None, run_after=None
+[2024-04-07T05:25:06.554+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/teardown.py took 0.555 seconds
