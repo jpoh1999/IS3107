@@ -35,3 +35,6 @@ The picture below shows the current dag structure
 ## Table : movie finance
 
 <img width="560" alt="image" src="https://github.com/jpoh1999/IS3107/assets/157945682/35d9e937-b38d-4661-867a-f11fe9c76606">
+# Data Lake For Backups :
+
+<img width="919" alt="image" src="https://github.com/jpoh1999/IS3107/assets/157945682/e3ed10df-2389-4079-bc9e-5682b80cda04">
