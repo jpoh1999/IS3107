@@ -17,7 +17,7 @@ default_args = {
     max_active_runs=8, # parallel workers to speed up batch ingestion
     schedule_interval=None,
     catchup=False,
-    tags=["is3107"]
+    tags=["is3107", "batch-processing"]
 )
 
 def batch_etl() :

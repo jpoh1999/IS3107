@@ -133,7 +133,7 @@ def load_from_csv_batch_sql(conn_params : dict, file_name : str, table_name : st
     # Remove last
     
     # Generate the SET part of the query
-    set_part = ', '.join([f'{column}=@{column_mapping[column]}' for column in column_mapping.keys()])
+    set_part = ', '.join([f'{column}={column_mapping[column]}' for column in column_mapping.keys()])
 
     logging.info(set_part)
     # Generate the full query
@@ -141,6 +141,9 @@ def load_from_csv_batch_sql(conn_params : dict, file_name : str, table_name : st
         LOAD DATA LOCAL INFILE '{file_name}'
         INTO TABLE 
             {table_name}
+        FIELDS TERMINATED BY ","  -- Adjust based on your file format
+        OPTIONALLY ENCLOSED BY '"'
+        LINES TERMINATED BY "\\n"  -- Adjust line terminator if needed
         IGNORE 1 LINES
         ({fields_part}) 
         SET 

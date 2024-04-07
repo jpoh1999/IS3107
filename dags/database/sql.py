@@ -1,8 +1,9 @@
+#TODO : find a better approach to store the cast instead of text
 CREATE_CASTS_TABLE_SQL = """
     CREATE TABLE movies_casts (
-        title VARCHAR(255),
+        title VARCHAR(255) PRIMARY KEY,
         director VARCHAR(255),
-        cast VARCHAR(255),
+        cast TEXT, 
         country VARCHAR(255),
         date_added DATE,
         release_year INT
@@ -11,26 +12,26 @@ CREATE_CASTS_TABLE_SQL = """
 
 CREATE_RATINGS_TABLE_SQL = """
     CREATE TABLE movies_rating (
-        title VARCHAR(255),
+        title VARCHAR(255) PRIMARY KEY,
         show_rating FLOAT,
         total_votes INT,
         release_date DATE,
         adult BOOLEAN,
-        overview TEXT,
+        description TEXT,
         popularity FLOAT,
         genres VARCHAR(255),
-        languages VARCHAR(255),
-        keywords VARCHAR(255)
+        languages TEXT,
+        keywords TEXT
     );
     """
 
 CREATE_FINANCE_TABLE_SQL = """
     CREATE TABLE movies_finance (
-        title VARCHAR(255),
-        revenue BIGINT,
-        budget BIGINT,
-        production_companies VARCHAR(255),
-        production_countries VARCHAR(255)
+        title VARCHAR(255) PRIMARY KEY,  -- Ensure titles are unique
+        revenue DECIMAL(39, 2),  -- Adjust precision and scale as needed
+        budget DECIMAL(39, 2),   -- Adjust precision and scale as needed
+        production_companies TEXT,
+        production_countries TEXT
     );
     """
 

@@ -1,0 +1,14 @@
+[2024-04-07T07:44:45.089+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: teardown.delete_file manual__2024-04-07T07:44:42.910940+00:00 [queued]>
+[2024-04-07T07:44:45.094+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: teardown.delete_file manual__2024-04-07T07:44:42.910940+00:00 [queued]>
+[2024-04-07T07:44:45.095+0000] {taskinstance.py:2193} INFO - Starting attempt 1 of 1
+[2024-04-07T07:44:45.101+0000] {taskinstance.py:2217} INFO - Executing <Task(_PythonDecoratedOperator): delete_file> on 2024-04-07 07:44:42.910940+00:00
+[2024-04-07T07:44:45.106+0000] {standard_task_runner.py:60} INFO - Started process 58 to run task
+[2024-04-07T07:44:45.109+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'teardown', 'delete_file', 'manual__2024-04-07T07:44:42.910940+00:00', '--job-id', '3', '--raw', '--subdir', 'DAGS_FOLDER/teardown.py', '--cfg-path', '/tmp/tmpg6oomjut']
+[2024-04-07T07:44:45.112+0000] {standard_task_runner.py:88} INFO - Job 3: Subtask delete_file
+[2024-04-07T07:44:45.166+0000] {task_command.py:423} INFO - Running <TaskInstance: teardown.delete_file manual__2024-04-07T07:44:42.910940+00:00 [running]> on host ea99b2a4c9f6
+[2024-04-07T07:44:45.223+0000] {taskinstance.py:2513} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='teardown' AIRFLOW_CTX_TASK_ID='delete_file' AIRFLOW_CTX_EXECUTION_DATE='2024-04-07T07:44:42.910940+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-04-07T07:44:42.910940+00:00'
+[2024-04-07T07:44:45.225+0000] {logging_mixin.py:188} INFO - File '/tmp/periods.txt' not found.
+[2024-04-07T07:44:45.225+0000] {python.py:202} INFO - Done. Returned value was: None
+[2024-04-07T07:44:45.233+0000] {taskinstance.py:1149} INFO - Marking task as SUCCESS. dag_id=teardown, task_id=delete_file, execution_date=20240407T074442, start_date=20240407T074445, end_date=20240407T074445
+[2024-04-07T07:44:45.248+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2024-04-07T07:44:45.262+0000] {taskinstance.py:3312} INFO - 1 downstream tasks scheduled from follow-on schedule check

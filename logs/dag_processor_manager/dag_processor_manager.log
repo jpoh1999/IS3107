@@ -3880,3 +3880,120 @@ File Path                           PID    Runtime      # DAGs    # Errors  Last
 /opt/airflow/dags/teardown.py                                1           0  0.35s           2024-04-07T05:14:33
 /opt/airflow/dags/main.py                                    0           0  0.02s           2024-04-07T05:14:33
 ================================================================================
+[2024-04-07T07:44:24.026+0000] {manager.py:469} INFO - Processing files using up to 2 processes at a time 
+[2024-04-07T07:44:24.027+0000] {manager.py:470} INFO - Process each file at most once every 30 seconds
+[2024-04-07T07:44:24.027+0000] {manager.py:471} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2024-04-07T07:44:24.027+0000] {manager.py:738} INFO - Searching for files in /opt/airflow/dags
+[2024-04-07T07:44:24.063+0000] {manager.py:741} INFO - There are 4 files in /opt/airflow/dags
+[2024-04-07T07:44:24.158+0000] {manager.py:879} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                             PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  ----------
+/opt/airflow/dags/teardown.py          31  0.03s             0           0
+/opt/airflow/dags/setup.py                                   0           0
+/opt/airflow/dags/main.py                                    0           0
+/opt/airflow/dags/batch_etl_dag.py     30  0.04s             0           0
+================================================================================
+[2024-04-07T07:44:54.551+0000] {manager.py:879} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/batch_etl_dag.py                           1           0  2.06s           2024-04-07T07:44:26
+/opt/airflow/dags/teardown.py                                1           0  2.05s           2024-04-07T07:44:26
+/opt/airflow/dags/setup.py                                   1           0  0.72s           2024-04-07T07:44:26
+/opt/airflow/dags/main.py                                    0           0  0.08s           2024-04-07T07:44:26
+================================================================================
+[2024-04-07T07:45:24.738+0000] {manager.py:879} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/batch_etl_dag.py                           1           0  0.91s           2024-04-07T07:44:57
+/opt/airflow/dags/teardown.py                                1           0  0.68s           2024-04-07T07:44:57
+/opt/airflow/dags/setup.py                                   1           0  0.52s           2024-04-07T07:44:57
+/opt/airflow/dags/main.py                                    0           0  0.04s           2024-04-07T07:44:57
+================================================================================
+[2024-04-07T07:45:55.001+0000] {manager.py:879} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/batch_etl_dag.py                           1           0  0.90s           2024-04-07T07:45:28
+/opt/airflow/dags/teardown.py                                1           0  0.82s           2024-04-07T07:45:28
+/opt/airflow/dags/setup.py                                   1           0  0.57s           2024-04-07T07:45:29
+/opt/airflow/dags/main.py                                    0           0  0.04s           2024-04-07T07:45:28
+================================================================================
+[2024-04-07T07:46:16.745+0000] {manager.py:451} INFO - Exiting gracefully upon receiving signal 15
+[2024-04-07T08:07:17.912+0000] {manager.py:469} INFO - Processing files using up to 2 processes at a time 
+[2024-04-07T08:07:17.914+0000] {manager.py:470} INFO - Process each file at most once every 30 seconds
+[2024-04-07T08:07:17.914+0000] {manager.py:471} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2024-04-07T08:07:17.914+0000] {manager.py:738} INFO - Searching for files in /opt/airflow/dags
+[2024-04-07T08:07:17.929+0000] {manager.py:741} INFO - There are 4 files in /opt/airflow/dags
+[2024-04-07T08:07:18.018+0000] {manager.py:879} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                             PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  ----------
+/opt/airflow/dags/teardown.py          30  0.04s             0           0
+/opt/airflow/dags/setup.py             31  0.04s             0           0
+/opt/airflow/dags/main.py                                    0           0
+/opt/airflow/dags/batch_etl_dag.py                           0           0
+================================================================================
+[2024-04-07T08:07:42.842+0000] {manager.py:451} INFO - Exiting gracefully upon receiving signal 15
+[2024-04-07T08:08:13.075+0000] {manager.py:469} INFO - Processing files using up to 2 processes at a time 
+[2024-04-07T08:08:13.075+0000] {manager.py:470} INFO - Process each file at most once every 30 seconds
+[2024-04-07T08:08:13.076+0000] {manager.py:471} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2024-04-07T08:08:13.076+0000] {manager.py:738} INFO - Searching for files in /opt/airflow/dags
+[2024-04-07T08:08:13.119+0000] {manager.py:741} INFO - There are 4 files in /opt/airflow/dags
+[2024-04-07T08:08:13.207+0000] {manager.py:879} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                             PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  ----------
+/opt/airflow/dags/teardown.py          30  0.06s             0           0
+/opt/airflow/dags/setup.py             31  0.05s             0           0
+/opt/airflow/dags/main.py                                    0           0
+/opt/airflow/dags/batch_etl_dag.py                           0           0
+================================================================================
+[2024-04-07T08:08:43.253+0000] {manager.py:879} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/setup.py                                   1           0  0.88s           2024-04-07T08:08:14
+/opt/airflow/dags/teardown.py                                1           0  0.79s           2024-04-07T08:08:13
+/opt/airflow/dags/batch_etl_dag.py                           1           0  0.68s           2024-04-07T08:08:14
+/opt/airflow/dags/main.py                                    0           0  0.03s           2024-04-07T08:08:14
+================================================================================
+[2024-04-07T08:09:13.405+0000] {manager.py:879} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/setup.py                                   1           0  0.50s           2024-04-07T08:08:44
+/opt/airflow/dags/teardown.py                                1           0  0.46s           2024-04-07T08:08:44
+/opt/airflow/dags/batch_etl_dag.py                           1           0  0.43s           2024-04-07T08:08:45
+/opt/airflow/dags/main.py                                    0           0  0.03s           2024-04-07T08:08:44
+================================================================================
+[2024-04-07T08:09:43.712+0000] {manager.py:879} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/setup.py                                   1           0  0.55s           2024-04-07T08:09:15
+/opt/airflow/dags/teardown.py                                1           0  0.51s           2024-04-07T08:09:15
+/opt/airflow/dags/batch_etl_dag.py                           1           0  0.38s           2024-04-07T08:09:15
+/opt/airflow/dags/main.py                                    0           0  0.04s           2024-04-07T08:09:15
+================================================================================
+[2024-04-07T08:10:11.963+0000] {manager.py:451} INFO - Exiting gracefully upon receiving signal 15

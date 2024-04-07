@@ -56,12 +56,12 @@ MOVIES_META = {
         'columns' : ['id', 'type', 'title', 'director', 'cast', 'country', 'date_added', 
            'release_year', 'rating', 'duration', 'listed_in', 'description'],
         'column_mapping' : {
-            'title' : 'title', # primary key
-            'director': 'director',
-            'cast': 'cast',
-            'country': 'country',
-            'date_added': 'date_added',
-            'release_year': 'release_year',
+            'title' : '@title', # primary key
+            'director': '@director',
+            'cast': '@cast',
+            'country': '@country',
+            'date_added': "STR_TO_DATE(@date_added,'%M %d, %Y')",
+            'release_year': '@release_year',
         }
     },
     "movies_rating" : {
@@ -75,16 +75,16 @@ MOVIES_META = {
                      'poster_path', 'tagline', 'genres', 'production_companies', 'production_countries', 
                      'spoken_languages', 'keywords'],
         'column_mapping' : {
-            'title': 'original_title', # primary key
-            'show_rating': 'vote_average',
-            'popularity' : 'popularity',
-            'total_votes' : 'vote_count',
-            'release_date': 'release_date',
-            'genres' : 'genres',
-            'adult': 'adult',
-            'description' : 'overview',
-            'languages' : 'spoken_languages',
-            'keywords' : 'keywords'
+            'title': '@original_title', # primary key
+            'show_rating': '@vote_average',
+            'popularity' : '@popularity',
+            'total_votes' : '@vote_count',
+            'release_date': '@release_date',
+            'genres' : '@genres',
+            'adult': '@adult',
+            'description' : '@overview',
+            'languages' : '@spoken_languages',
+            'keywords' : '@keywords'
         }
     },
 
@@ -99,11 +99,11 @@ MOVIES_META = {
                      'poster_path', 'tagline', 'genres', 'production_companies', 'production_countries', 
                      'spoken_languages', 'keywords'],
         'column_mapping' : {
-            'title': 'original_title', # primary key
-            'revenue': 'revenue',
-            'budget': 'budget',
-            'production_companies': 'production_companies',
-            'production_countries': 'production_countries',
+            'title': '@original_title', # primary key
+            'revenue': '@revenue',
+            'budget': '@budget',
+            'production_companies': '@production_companies',
+            'production_countries': '@production_countries',
         }
     }
 }

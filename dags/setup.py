@@ -14,7 +14,7 @@ default_args = {
     max_active_runs=1,  # prevent multiple runs
     schedule_interval=None,  # timedelta(minutes=1),
     catchup=False,
-    tags=["bt4301-a1"],
+    tags=["is3107-a1","setup"],
 )
 def setup():
     @task(task_id="start")
@@ -29,12 +29,16 @@ def setup():
         for database in DATABASES :
             create_drop_new_database(database, "CREATE")
 
-            drop_create_tables(database, 
-                               create_queries=CREATE_QUERIES,
-                               drop_queries=DROP_QUERIES)
             
             set_up_global_infile(database)
     
+    @task(task_id="drop_create_tables_datawarehouse")
+    def drop_create_tables_dw() :
+        """
+        Set up the tables for datawarehouse
+        """
+        drop_create_tables(DBWAREHOUSE_PARAMS, create_queries=CREATE_QUERIES, drop_queries=DROP_QUERIES)
+
     @task(task_id="set_up_datalake")
     def set_up_datalake():
         """
@@ -50,7 +54,7 @@ def setup():
     def end():
         pass
 
-    start() >> set_up_databases() >> set_up_datalake() >> end()
+    start() >> set_up_databases() >> set_up_datalake() >> drop_create_tables_dw() >> end()
 
 
 setup()

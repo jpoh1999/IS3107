@@ -8,7 +8,7 @@ import os
     max_active_runs=1,  # prevent multiple runs
     schedule_interval= None,#timedelta(minutes=1),
     catchup=False,
-    tags=["bt4301-a1"],
+    tags=["is3107", "teardown"],
 )
 def teardown() :
 
