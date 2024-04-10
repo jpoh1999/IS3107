@@ -10,7 +10,7 @@ default_args = {
 
 @dag(
     max_active_runs=1, # prevent multi dags
-    schedule_interval=datetime.time_delta(minutes=5),
+    # schedule_interval=datetime.time_delta(minutes=5),
     catchup=False,
     tags=["is3107"]
 )
