@@ -5,6 +5,7 @@ import pandas as pd
 import mysql.connector
 from dateutil.relativedelta import relativedelta
 from typing import Callable, Any
+from mysql.connector import Error
 
 def set_up_global_infile(db_params : dict) :
     """
@@ -33,27 +34,24 @@ def create_drop_new_database(db_params: dict, create_or_drop : str) :
     """
     conn_params = db_params.copy()
     database_name = conn_params.pop("database")
-
     conn = mysql.connector.connect(
         **conn_params
     )
-    
     # get the connection cursor
     cursor = conn.cursor()
-
-    
+   
     try:  
-        #creating or dropping a new database  
-        cursor.execute(f"{create_or_drop} IF EXISTS database {database_name}")  
-    
-        #getting the list of all the databases which will now include the new database PythonDB  
-        # cursor.execute("show databases")  
+        #creating or dropping a new database
+        if create_or_drop == "CREATE":
+            cursor.execute(f"CREATE DATABASE IF NOT EXISTS {database_name}")
+        else:
+            cursor.execute(f"DROP DATABASE IF EXISTS {database_name}")
 
-      
-    except:  
-        logging.error("Database already exists!!")
-        # rollback changes on error
-        # conn.rollback()  
+    except Error as err:
+        print(f"Error: '{err}'")
+ 
+    cursor.close()
+    conn.close()
 
 def my_sql_connector_query(conn_params: dict, query_list: list):
     """
