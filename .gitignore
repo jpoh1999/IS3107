@@ -1,3 +1,5 @@
 **/logs/
 **/__pycache__/
 **/data
+dags/constants.py
+git 

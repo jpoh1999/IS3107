@@ -75,10 +75,11 @@ CREATE_GENRES_DB_SQL = """
     WITH RECURSIVE cte AS (
         SELECT
             title,
+            release_date,
             SUBSTRING_INDEX(genres, ',', 1) AS DataItem,
             SUBSTRING(genres, CHAR_LENGTH(SUBSTRING_INDEX(genres, ',', 1)) + 2) AS remaining_genre
         FROM
-            datawarehouse.movies_rating
+            dashboard.movies
         WHERE
             genres > ''
         AND
@@ -88,6 +89,7 @@ CREATE_GENRES_DB_SQL = """
         
         SELECT
             title,
+            release_date,
             SUBSTRING_INDEX(remaining_genre, ',', 1) AS DataItem,
             SUBSTRING(remaining_genre, CHAR_LENGTH(SUBSTRING_INDEX(remaining_genre, ',', 1)) + 2) AS remaining_genre
         FROM
@@ -97,7 +99,7 @@ CREATE_GENRES_DB_SQL = """
         AND
             release_date > '1800-01-01'
     )
-    SELECT
+    SELECT DISTINCT
         title,
         TRIM(DataItem) AS genre
     FROM
@@ -114,7 +116,7 @@ CREATE_ACTORS_DB_SQL = """
             SUBSTRING_INDEX(cast, ',', 1) AS DataItem,
             SUBSTRING(cast, CHAR_LENGTH(SUBSTRING_INDEX(cast, ',', 1)) + 2) AS remaining_cast
         FROM
-            datawarehouse.movies_casts
+            dashboard.movies
         WHERE
             cast > ''
         UNION ALL
@@ -128,7 +130,7 @@ CREATE_ACTORS_DB_SQL = """
         WHERE
             remaining_cast > ''
     )
-    SELECT
+    SELECT DISTINCT
         title,
         TRIM(DataItem) AS cast
     FROM
@@ -225,6 +227,25 @@ INSERT_FINANCE_SQL = """
     );
 """
 
+ALTER_MOVIES_DB_SQL = """
+    ALTER TABLE movies
+    ADD PRIMARY KEY (title);
+"""
+
+ALTER_ACTORS_DB_SQL = """
+    ALTER TABLE actors
+    MODIFY cast VARCHAR(255),
+    ADD PRIMARY KEY (title, cast),
+    ADD FOREIGN KEY (title) REFERENCES movies(title);
+"""
+
+ALTER_GENRES_DB_SQL = """
+    ALTER TABLE genres
+    MODIFY genre VARCHAR(255),
+    ADD PRIMARY KEY (title, genre),
+    ADD FOREIGN KEY (title) REFERENCES movies(title);
+"""
+
 CREATE_QUERIES_DW = [CREATE_CASTS_TABLE_SQL,CREATE_FINANCE_TABLE_SQL,CREATE_RATINGS_TABLE_SQL]
 DROP_QUERIES_DW = [
     "DROP TABLE IF EXISTS movies_casts;",
@@ -232,7 +253,7 @@ DROP_QUERIES_DW = [
     "DROP TABLE IF EXISTS movies_finance;"
 ]
 
-CREATE_QUERIES_DB = [CREATE_MOVIES_DB_SQL, CREATE_GENRES_DB_SQL, CREATE_ACTORS_DB_SQL]
+CREATE_QUERIES_DB = [CREATE_MOVIES_DB_SQL, CREATE_GENRES_DB_SQL, CREATE_ACTORS_DB_SQL] ## Order matters here
 DROP_QUERIES_DB = [
     "DROP TABLE IF EXISTS movies;",
     "DROP TABLE IF EXISTS genres;",
@@ -244,5 +265,4 @@ DROP_QUERIES_ML = [
     "DROP TABLE IF EXISTS movies;",
 ]
 
-
-
+ALTER_QUERIES_DB = [ALTER_MOVIES_DB_SQL,ALTER_ACTORS_DB_SQL,ALTER_GENRES_DB_SQL] ## Order matters here

@@ -2,7 +2,7 @@ from database.warehouse import *
 from database.lake import *
 from helpers.dummyops import start, end
 from airflow.decorators import task, task_group
-from database.sql import CREATE_QUERIES_DB, DROP_QUERIES_DB
+from database.sql import CREATE_QUERIES_DB, DROP_QUERIES_DB, ALTER_QUERIES_DB
 
 @task(task_id = "etl_dashboard")
 def etl_dashboard() :
@@ -13,10 +13,9 @@ def etl_dashboard() :
         Description : ETL Process for Dashboard DataMart
         Entire extraction and transformation done 
         using SQL Queries.
-    """
-
-    
+    """    
     drop_create_tables(DASHBOARDMART_PARAMS, CREATE_QUERIES_DB, DROP_QUERIES_DB)
+    my_sql_connector_query(DASHBOARDMART_PARAMS, ALTER_QUERIES_DB)
 
 
 """
