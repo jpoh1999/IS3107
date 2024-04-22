@@ -71,6 +71,7 @@ def my_sql_connector_query(conn_params: dict, query_list: list):
     """
     try:
         logging.info(conn_params)
+        
         db = mysql.connector.connect(
             **conn_params
         )  # Connect one time to DBWAREHOUSE using mysql connector
@@ -79,6 +80,7 @@ def my_sql_connector_query(conn_params: dict, query_list: list):
 
         # -------------------- EXECUTE QUERIES --------------------- #
         for query in query_list:
+            logging.info(query)
             cursor.execute(query)
 
         # ----------- COMMIT CHANGES AND CLOSE CONNECTION ---------- #

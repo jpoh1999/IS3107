@@ -3,7 +3,10 @@ from constants import DATE_FILENAME, DATABASES
 from database.warehouse import *
 import os
 
-
+"""
+    This dag is used to teardown the workflow
+    
+"""
 @dag(
     max_active_runs=1,  # prevent multiple runs
     schedule_interval= None,#timedelta(minutes=1),
@@ -14,6 +17,13 @@ def teardown() :
 
     @task(task_id="delete_file")
     def delete_file(file_name):
+
+        """
+            Author : James Poh Hao
+            Co-author : Wei Han, Jiayi, Shan Yi, Mei Lin
+
+            Description : Delete all file remnants related to the Workflow
+        """
         try:
             os.remove(file_name)
             print(f"File '{file_name}' has been successfully deleted.")
@@ -25,7 +35,10 @@ def teardown() :
     @task(task_id="delete_databases")
     def delete_databases() :
         """
-        Delete databases to free up server storage
+            Author : James Poh Hao
+            Co-author : Wei Han, Jiayi, Shan Yi, Mei Lin
+
+            Description : Delete databases to free up server storage
         """
         for database in DATABASES:
             create_drop_new_database(database, "DROP")

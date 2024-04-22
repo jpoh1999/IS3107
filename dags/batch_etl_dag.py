@@ -2,9 +2,16 @@ from airflow.decorators import task, dag, task_group
 from airflow.operators.python_operator import PythonOperator
 from datetime import datetime
 from constants import *
-from helpers.ingest import download_from_kaggle
+
+from helpers.dataengineer import ingest
+from helpers.dummyops import start, end, datawarehouse, await_tasks
+
+from helpers.ml import etl_ml;
+from helpers.ops import etl_dashboard;
+
 from database.warehouse import *
 from database.lake import *
+
 
 default_args = {
     "owner": "airflow",
@@ -14,7 +21,7 @@ default_args = {
 
 
 @dag(
-    max_active_runs=8, # parallel workers to speed up batch ingestion
+    max_active_runs=8, # backfill workers
     schedule_interval=None,
     catchup=False,
     tags=["is3107", "batch-processing"]
@@ -22,72 +29,57 @@ default_args = {
 
 def batch_etl() :
     """
-        Batch etl
+        Author : James Poh Hao
+        Co-author : Wei Han, Jiayi, Shan Yi, Mei Lin
+
+        Batch etl for the movies analytic company
     """
-    @task(task_id="start")
-    def start() :
+    @task_group(group_id = "data_engineers")
+    def data_engineer() :
         """
-        Dummy operator
-        """
-        pass
-
-    
-
-    @task_group(group_id = "ingest")
-    def batch_ingest() :
-        """
-            Download files parallelly to save time
+            Task group for data engineers
+            It does the following :
+            a. Group ingestion for the different data sources
+            b. Download files parallelly to save time
         """
         ingests = []
         
         for table_name, meta_data in MOVIES_META.items():
             # folder = datetime.datetime.now().strftime("%Y%m%dT%H%M%S") # use the current datetime as folder
             group_id=f"individual_ingest_{table_name}"
-            
-            @task_group(group_id = group_id)
-            def ingest(table_name : str, meta_data : dict) :
-                conn = meta_data["connection"] # connection 
-                file_name = meta_data["file_name"] # filename
-                dataset_name = meta_data["dataset_name"] # datasetname
-                columns = meta_data["columns"] # columns
-                column_mapping = meta_data["column_mapping"] # mappings
-                par_dir = f"{TEMP_DIR}/{table_name}" # parent directory
-                src_file_path = f"{par_dir}/{file_name}" # src_file after concatenating with parent directory
-                dest_file_path = f"data/{file_name}" # destination path
-
-                download = download_from_kaggle.override(task_id=f"download_files_{table_name}") \
-                                        (dataset_name, par_dir)
-                upload = PythonOperator(task_id =f"uploading{table_name}", 
-                                        python_callable = upload_blob, 
-                                        op_args = [BUCKETNAME, 
-                                                    src_file_path, 
-                                                    dest_file_path]) # store in gcs
-                load = PythonOperator(task_id =f"loading{table_name}", 
-                                        python_callable = load_from_csv_batch_sql, 
-                                        op_args = [
-                                                conn,
-                                                src_file_path,
-                                                table_name,
-                                                columns,
-                                                column_mapping]) # store in gcsload_from_csv_batch_sql(conn_params=conn,
-                start() >> download >> [upload,load] >> end()
-            
-            individual_ingest = ingest(table_name=table_name,
-                                       meta_data=meta_data)                                        
+            par_dir = f"{TEMP_DIR}/{table_name}" # parent directory
+            individual_ingest = ingest.override(group_id=group_id) (
+                table_name=table_name,
+                meta_data=meta_data,
+                par_dir=par_dir,
+                bucket_name=BUCKETNAME
+            )                                       
             
             ingests.append(individual_ingest) # download files into temp directory if not exists
         
         return start() >> ingests >> end()
 
-     
-    @task(task_id = "end", trigger_rule="all_success")
-    def end() :
+    @task_group(group_id="ops")
+    def ops() :
         """
-        Dummy operator
+            ETL the relevant data from the datawarehouse into ops database
+            And perform some other tasks for ops
+            TODO: Implement logic for connecting to dashboard, etc.
         """
-        pass
+        start() >> etl_dashboard() >> await_tasks() >> end()
 
-    start() >> batch_ingest() >> end()
+    @task_group(group_id = "ml")
+    def ml() :
+        """
+            ETL the relevant data from the datawarehouse into ml database
+            And perform some other tasks for ml
+            TODO: Implement logic for mltraining and deployment
+        """
+        start() >> etl_ml() >> await_tasks() >> end()
+
+
+    data_engineer() >> datawarehouse() >> [ops(), ml()]
+
 
 
 batch_etl()        

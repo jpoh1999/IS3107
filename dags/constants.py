@@ -13,7 +13,6 @@ MLMART_PARAMS = {
     "user" : "root",
     "password" : "password",
     "database" : "machinelearning",
-    "allow_local_infile" : True,
 }
 
 DBWAREHOUSE_PARAMS = {
@@ -42,7 +41,7 @@ TEMP_DIR = "/opt/airflow/tmp"
 # name_table_in_sql : {
 #     connection : conenction to the database where table is stored
 #     file_name : the name of the file,
-#     dataset_name : the dataset name for kaggle/api extraction
+#     dataset_name : the dataset name for kaggle/api extraction 
 #     url : the endpoint url of the api 
 #     columns : the columns of the ingested file
 #     column_maping : mapping of the required/transformed cols
@@ -57,6 +56,7 @@ MOVIES_META = {
            'release_year', 'rating', 'duration', 'listed_in', 'description'],
         'column_mapping' : {
             'title' : '@title', # primary key
+            'type' : '@type',
             'director': '@director',
             'cast': '@cast',
             'country': '@country',
