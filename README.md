@@ -22,7 +22,10 @@ Run in this sequence : setup >> batch_pipeline >> teardown
 
 # CurrentDagStructure
 The picture below shows the current dag structure
-<img width="1481" alt="image" src="https://github.com/jpoh1999/IS3107/assets/157945682/9980d894-c8f1-4cbb-b76e-a5649ef7192b">
+
+<img width="1109" alt="image" src="https://github.com/jpoh1999/IS3107/assets/157945682/ec66fd9f-3fdc-4c4d-a99a-beb7febf46b6">
+
+<img width="1109" alt="image" src="https://github.com/jpoh1999/IS3107/assets/157945682/c22dd6c0-f810-4200-ac89-f44debe9c264">
 
 
 # Schemas of Tables in Datawarehouse :
@@ -32,11 +35,29 @@ The picture below shows the current dag structure
 
 ## Table : movie casts
 
-<img width="1293" alt="image" src="https://github.com/jpoh1999/IS3107/assets/157945682/9dd8373c-9102-4056-ac25-fe4ee7e9b0bf">
+<img width="1224" alt="image" src="https://github.com/jpoh1999/IS3107/assets/157945682/9dd8373c-9102-4056-ac25-fe4ee7e9b0bf">
 
 ## Table : movie finance
 
-<img width="560" alt="image" src="https://github.com/jpoh1999/IS3107/assets/157945682/35d9e937-b38d-4661-867a-f11fe9c76606">
+<img width="1224" alt="image" src="https://github.com/jpoh1999/IS3107/assets/157945682/35d9e937-b38d-4661-867a-f11fe9c76606">
+
+# Schemas of Tables in Dashboard Mart :
+
+## Table : Actors 
+<img width="1224" alt="image" src="https://github.com/jpoh1999/IS3107/assets/157945682/be2656b3-9156-465d-9e6b-c22a4cb86e95">
+
+## Table : Genres
+<img width="1224" alt="image" src="https://github.com/jpoh1999/IS3107/assets/157945682/4f6eee6b-3521-440e-b457-9918246ddad1">
+
+## Table : Movies
+<img width="1224" alt="image" src="https://github.com/jpoh1999/IS3107/assets/157945682/385bb66e-f54c-47db-90ee-12a707456b03">
+
+# Schema of Tables in Machine Learning Mart :
+
+## Table : Movies
+<img width="1224" alt="image" src="https://github.com/jpoh1999/IS3107/assets/157945682/d4e6906a-df8c-4a51-86e6-714860dc4b1b">
+
+
 # Data Lake For Backups :
 
-<img width="919" alt="image" src="https://github.com/jpoh1999/IS3107/assets/157945682/e3ed10df-2389-4079-bc9e-5682b80cda04">
+<img width="1224" alt="image" src="https://github.com/jpoh1999/IS3107/assets/157945682/e3ed10df-2389-4079-bc9e-5682b80cda04">
