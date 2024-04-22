@@ -7,7 +7,7 @@ CREATE_CASTS_TABLE_SQL = """
         cast TEXT, 
         country VARCHAR(255),
         date_added DATE,
-        release_year INT
+        release_year INT,
     )
     """
 

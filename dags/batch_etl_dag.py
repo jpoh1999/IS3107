@@ -4,10 +4,10 @@ from datetime import datetime
 from constants import *
 
 from helpers.dataengineer import ingest
-from helpers.dummyops import start, end, datawarehouse, await_tasks
+from helpers.dummyops import start, end, datawarehouse_etl_start, await_tasks
 
 from helpers.ml import etl_ml;
-from helpers.ops import etl_dashboard;
+from dags.helpers.operations import etl_dashboard;
 
 from database.warehouse import *
 from database.lake import *
@@ -59,8 +59,8 @@ def batch_etl() :
         
         return start() >> ingests >> end()
 
-    @task_group(group_id="ops")
-    def ops() :
+    @task_group(group_id="operations")
+    def operations() :
         """
             ETL the relevant data from the datawarehouse into ops database
             And perform some other tasks for ops
@@ -68,8 +68,8 @@ def batch_etl() :
         """
         start() >> etl_dashboard() >> await_tasks() >> end()
 
-    @task_group(group_id = "ml")
-    def ml() :
+    @task_group(group_id = "machine_learnig")
+    def machine_learnig() :
         """
             ETL the relevant data from the datawarehouse into ml database
             And perform some other tasks for ml
@@ -78,7 +78,7 @@ def batch_etl() :
         start() >> etl_ml() >> await_tasks() >> end()
 
 
-    data_engineer() >> datawarehouse() >> [ops(), ml()]
+    data_engineer() >> datawarehouse_etl_start() >> [operations(), machine_learnig()]
 
 
 

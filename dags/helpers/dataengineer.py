@@ -97,14 +97,14 @@ def ingest(table_name : str, meta_data : dict, par_dir : str, bucket_name : str)
                             )
                         
     ## Upload a blob of this raw data into gcs
-    upload = upload_blob_task.override(task_id =f"uploading{table_name}") (
+    upload = upload_blob_task.override(task_id =f"uploading_{table_name}_cloud") (
                             bucket_name=bucket_name, 
                             src_file_path=src_file_path, 
                             dest_file_path=dest_file_path
                             ) # store in gcs
 
     ## Load the required transformed data into warehouse
-    load = upload_to_sql.override(task_id =f"uploading{table_name}") (
+    load = upload_to_sql.override(task_id =f"uploading_{table_name}_sql") (
                                     conn=conn,
                                     src_file_path=src_file_path,
                                     table_name=table_name,

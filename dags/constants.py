@@ -3,7 +3,7 @@ import datetime
 DASHBOARDMART_PARAMS = {
     "host" : "host.docker.internal",
     "user" : "root",
-    "password" : "password",
+    "password" : "20021202",
     "database" : "dashboard",
     "allow_local_infile" : True,
 }
@@ -11,14 +11,14 @@ DASHBOARDMART_PARAMS = {
 MLMART_PARAMS = {
     "host" : "host.docker.internal",
     "user" : "root",
-    "password" : "password",
+    "password" : "20021202",
     "database" : "machinelearning",
 }
 
 DBWAREHOUSE_PARAMS = {
     "host": "host.docker.internal",
     "user": "root",
-    "password": "password",
+    "password": "20021202",
     "database": "datawarehouse",
     "allow_local_infile" : True,
 }
@@ -82,7 +82,6 @@ MOVIES_META = {
             'total_votes' : '@vote_count',
             'release_date': '@release_date',
             'genres' : '@genres',
-            'adult': '@adult',
             'description' : '@overview',
             'languages' : '@spoken_languages',
             'keywords' : '@keywords'

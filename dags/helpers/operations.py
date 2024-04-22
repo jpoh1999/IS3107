@@ -14,6 +14,8 @@ def etl_dashboard() :
         Entire extraction and transformation done 
         using SQL Queries.
     """
+
+    
     drop_create_tables(DASHBOARDMART_PARAMS, CREATE_QUERIES_DB, DROP_QUERIES_DB)
 
 
