@@ -99,7 +99,7 @@ CREATE_GENRES_DB_SQL = """
     )
     SELECT
         title,
-        DataItem AS genre
+        TRIM(DataItem) AS genre
     FROM
         cte
     ORDER BY
@@ -130,7 +130,7 @@ CREATE_ACTORS_DB_SQL = """
     )
     SELECT
         title,
-        DataItem
+        TRIM(DataItem) AS cast
     FROM
         cte
     ORDER BY
