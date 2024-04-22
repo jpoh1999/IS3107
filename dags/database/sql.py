@@ -17,7 +17,6 @@ CREATE_RATINGS_TABLE_SQL = """
         show_rating FLOAT,
         total_votes INT,
         release_date DATE,
-        adult BOOLEAN,
         description TEXT,
         popularity FLOAT,
         genres VARCHAR(255),
@@ -76,7 +75,6 @@ CREATE_GENRES_DB_SQL = """
     WITH RECURSIVE cte AS (
         SELECT
             title,
-            release_date,
             SUBSTRING_INDEX(genres, ',', 1) AS DataItem,
             SUBSTRING(genres, CHAR_LENGTH(SUBSTRING_INDEX(genres, ',', 1)) + 2) AS remaining_genre
         FROM
@@ -90,7 +88,6 @@ CREATE_GENRES_DB_SQL = """
         
         SELECT
             title,
-            release_date,
             SUBSTRING_INDEX(remaining_genre, ',', 1) AS DataItem,
             SUBSTRING(remaining_genre, CHAR_LENGTH(SUBSTRING_INDEX(remaining_genre, ',', 1)) + 2) AS remaining_genre
         FROM
@@ -102,7 +99,6 @@ CREATE_GENRES_DB_SQL = """
     )
     SELECT
         title,
-        YEAR(release_date) AS release_year,
         DataItem AS genre
     FROM
         cte
@@ -115,7 +111,6 @@ CREATE_ACTORS_DB_SQL = """
     WITH RECURSIVE cte AS (
         SELECT
             title,
-            release_year,
             SUBSTRING_INDEX(cast, ',', 1) AS DataItem,
             SUBSTRING(cast, CHAR_LENGTH(SUBSTRING_INDEX(cast, ',', 1)) + 2) AS remaining_cast
         FROM
@@ -126,7 +121,6 @@ CREATE_ACTORS_DB_SQL = """
         
         SELECT
             title,
-            release_year,
             SUBSTRING_INDEX(remaining_cast, ',', 1) AS DataItem,
             SUBSTRING(remaining_cast, CHAR_LENGTH(SUBSTRING_INDEX(remaining_cast, ',', 1)) + 2) AS remaining_cast
         FROM
@@ -136,7 +130,6 @@ CREATE_ACTORS_DB_SQL = """
     )
     SELECT
         title,
-        release_year,
         DataItem
     FROM
         cte
@@ -219,7 +212,7 @@ INSERT_CASTS_SQL = """
     """
 INSERT_RATINGS_SQL = """
     INSERT INTO movies_rating (
-        original_title, vote_average, vote_count, release_date, adult, overview, popularity, genres, spoken_languages, keywords
+        original_title, vote_average, vote_count, release_date, overview, popularity, genres, spoken_languages, keywords
     ) VALUES (
         %s, %s, %s, %s, %s, %s, %s, %s, %s, %s
     );
