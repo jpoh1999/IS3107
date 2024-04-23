@@ -11,3 +11,5 @@ numpy
 nltk
 pyarrow
 mlflow-skinny
+scikit-learn
+
