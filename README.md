@@ -5,7 +5,7 @@ git clone https://github.com/jpoh1999/IS3107/
 
 cd IS3107
 
-docker build -t "is3107:1.0" .
+docker build -t "is3107:1.0" . -f Dockerfile.airflow
 docker compose up airflow-init
 
 docker compose up -d
@@ -26,6 +26,12 @@ The picture below shows the current dag structure
 <img width="1109" alt="image" src="https://github.com/jpoh1999/IS3107/assets/157945682/ec66fd9f-3fdc-4c4d-a99a-beb7febf46b6">
 
 <img width="1109" alt="image" src="https://github.com/jpoh1999/IS3107/assets/157945682/c22dd6c0-f810-4200-ac89-f44debe9c264">
+
+OperationsWorkflow :
+<img width="443" alt="image" src="https://github.com/jpoh1999/IS3107/assets/157945682/b6f8991e-dc5b-425f-8941-70bbbcb258df">
+
+MachineLearningWorkflow :
+<img width="978" alt="image" src="https://github.com/jpoh1999/IS3107/assets/157945682/10de201a-0adb-47c8-bbd7-9781b2025d7c">
 
 
 # Schemas of Tables in Datawarehouse :
@@ -56,6 +62,14 @@ The picture below shows the current dag structure
 
 ## Table : Movies
 <img width="1224" alt="image" src="https://github.com/jpoh1999/IS3107/assets/157945682/d4e6906a-df8c-4a51-86e6-714860dc4b1b">
+
+# MLFlow Artifact Repository
+
+<img width="1224" alt="image" src="https://github.com/jpoh1999/IS3107/assets/157945682/342794a6-f187-471e-8507-2865a45e7b9e">
+
+<img width="1224" alt="image" src="https://github.com/jpoh1999/IS3107/assets/157945682/9d7b9e69-605c-4f29-a11e-c89743bd5e3a">
+
+<img width="1224" alt="image" src="https://github.com/jpoh1999/IS3107/assets/157945682/a9233df3-7c38-4df0-bd78-d02c97547693">
 
 
 # Data Lake For Backups :
