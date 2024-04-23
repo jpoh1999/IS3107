@@ -10,3 +10,4 @@ scikit-learn
 numpy
 nltk
 pyarrow
+mlflow-skinny

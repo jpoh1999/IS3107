@@ -7,6 +7,7 @@ from constants import MLMART_PARAMS
 from sklearn.model_selection import train_test_split
 import pandas as pd
 import numpy as np
+import joblib
 from sqlalchemy import create_engine
 from constants import RANDOM_STATE, DATA_DIR
 
@@ -19,10 +20,16 @@ from sklearn.neural_network import MLPClassifier
 from sklearn.ensemble import AdaBoostClassifier, RandomForestClassifier
 from sklearn.neighbors import KNeighborsClassifier
 
-## Evaluation
-from sklearn.metrics import confusion_matrix, classification_report, roc_auc_score #accuracy_score, , recall_score, precision_score
 
-import joblib
+## Evaluation
+from sklearn.metrics import confusion_matrix, classification_report, roc_auc_score, accuracy_score, recall_score, precision_score
+
+## MLFlow
+import mlflow
+from mlflow.models import infer_signature
+import mlflow.pyfunc
+
+
 
 def get_mlmart_connection() :
     """
@@ -373,6 +380,27 @@ def evaluate_model(ensemblepath, **context) :
     y_test = pd.read_sql(read_y, con=connection)
     
     y_preds = ensemble_clf.predict(X_test)
+
+    #Set tracking server uri for logging
+    mlflow.set_tracking_uri(uri="http://host.docker.internal:5000")
+    # Create a new MLflow Experiment
+    mlflow.set_experiment(f"Predicting Movies")
+
+    # Start an MLflow run
+    with mlflow.start_run():
+        mlflow.autolog()
+        mlflow.set_tag("Testing Info", f"Initialize Model")
+        signature = infer_signature(y_test, y_preds)
+        acc = accuracy_score(y_true=y_test, y_pred=y_preds)
+        mlflow.log_metric("Accuracy Score", acc)
+        model_info = mlflow.sklearn.log_model(
+                    sk_model=ensemble_clf,
+                    artifact_path=f"Ensemble_classifier",
+                    signature=signature,
+                    input_example=X_test,
+                    registered_model_name=f"Ensemble_classifier"
+                )
+        print(model_info.model_uri)
     
     evaluate(y_test = y_test, y_pred = y_preds)
 

@@ -32,7 +32,15 @@ def batch_etl() :
         Author : James Poh Hao
         Co-author : Wei Han, Jiayi, Shan Yi, Mei Lin
 
-        Batch etl for the movies analytic company
+        Tag: Batch etl for the movies analytic company
+        Description : As film production is costly, 
+        it is crucial to create a movie that appeals to the majority of the audience 
+        so that the film production company can maximize their profits. 
+        Therefore, the film industry should not only innovate in terms of content and technology 
+        but also create movies that best cater to the increasingly picky audience's taste. 
+        Consequently, we would like to analyze and understand patterns in the movie industry over time. 
+        This analysis will empower industry stakeholders to make informed decisions on future productions, 
+        marketing strategies, and content curation. 
     """
     @task_group(group_id = "data_engineers")
     def data_engineer() :
