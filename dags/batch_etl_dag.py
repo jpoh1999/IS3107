@@ -6,7 +6,7 @@ from constants import *
 from helpers.dataengineer import ingest
 from helpers.dummyops import start, end, datawarehouse_etl_start, await_tasks
 
-from helpers.ml import etl_ml;
+from helpers.ml import etl_ml, data_preparation, ml_ops
 from helpers.operations import etl_dashboard;
 
 from database.warehouse import *
@@ -68,17 +68,17 @@ def batch_etl() :
         """
         start() >> etl_dashboard() >> await_tasks() >> end()
 
-    @task_group(group_id = "machine_learnig")
-    def machine_learnig() :
+    @task_group(group_id = "machine_learning")
+    def machine_learning() :
         """
             ETL the relevant data from the datawarehouse into ml database
             And perform some other tasks for ml
             TODO: Implement logic for mltraining and deployment
         """
-        start() >> etl_ml() >> await_tasks() >> end()
+        start() >> etl_ml() >> data_preparation() >> ml_ops() >> end()
 
 
-    data_engineer() >> datawarehouse_etl_start() >> [operations(), machine_learnig()]
+    data_engineer() >> datawarehouse_etl_start() >> [operations(), machine_learning()]
 
 
 

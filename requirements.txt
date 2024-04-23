@@ -1,6 +1,12 @@
 pandas
 mysql-connector-python
 mysqlclient
+sqlalchemy
+pymysql
 kaggle
 google-cloud
 google-cloud-storage
+scikit-learn
+numpy
+nltk
+pyarrow
