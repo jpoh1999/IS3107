@@ -3,7 +3,7 @@ import datetime
 DASHBOARDMART_PARAMS = {
     "host" : "host.docker.internal",
     "user" : "root",
-    "password" : "20021202",
+    "password" : "password",
     "database" : "dashboard",
     "allow_local_infile" : True,
 }
@@ -11,14 +11,14 @@ DASHBOARDMART_PARAMS = {
 MLMART_PARAMS = {
     "host" : "host.docker.internal",
     "user" : "root",
-    "password" : "20021202",
+    "password" : "password",
     "database" : "machinelearning",
 }
 
 DBWAREHOUSE_PARAMS = {
     "host": "host.docker.internal",
     "user": "root",
-    "password": "20021202",
+    "password": "password",
     "database": "datawarehouse",
     "allow_local_infile" : True,
 }
@@ -115,3 +115,4 @@ MOVIES_META = {
 DATE_FILENAME = "/tmp/periods.txt"
 START_DATE = datetime.datetime(2020, 1, 1) # date to start the simulation
 END_DATE = datetime.datetime(2024, 1, 1) # date to end the simulation
+RANDOM_STATE = 1234
