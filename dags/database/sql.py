@@ -70,6 +70,70 @@ CREATE_MOVIES_DB_SQL = """
     );
     """
 
+CREATE_COUNTRY_DB_SQL = """
+    CREATE TABLE dashboard.countries AS
+    WITH RECURSIVE cte AS (
+        SELECT
+            title,
+            SUBSTRING_INDEX(country, ',', 1) AS DataItem,
+            SUBSTRING(country, CHAR_LENGTH(SUBSTRING_INDEX(country, ',', 1)) + 2) AS remaining_country
+        FROM
+            dashboard.movies
+        WHERE
+            country > ''
+        UNION ALL
+        
+        SELECT
+            title,
+            SUBSTRING_INDEX(remaining_country, ',', 1) AS DataItem,
+            SUBSTRING(remaining_country, CHAR_LENGTH(SUBSTRING_INDEX(remaining_country, ',', 1)) + 2) AS remaining_country
+        FROM
+            cte
+        WHERE
+            remaining_country > ''
+    )
+    SELECT DISTINCT
+        title,
+        TRIM(DataItem) AS country
+    FROM
+        cte
+    ORDER BY
+        title;
+
+"""
+
+CREATE_DIRECTOR_DB_SQL = """
+    CREATE TABLE dashboard.directors AS
+    WITH RECURSIVE cte AS (
+        SELECT
+            title,
+            SUBSTRING_INDEX(director, ',', 1) AS DataItem,
+            SUBSTRING(director, CHAR_LENGTH(SUBSTRING_INDEX(director, ',', 1)) + 2) AS remaining_director
+        FROM
+            dashboard.movies
+        WHERE
+            director > ''
+        UNION ALL
+        
+        SELECT
+            title,
+            SUBSTRING_INDEX(remaining_director, ',', 1) AS DataItem,
+            SUBSTRING(remaining_director, CHAR_LENGTH(SUBSTRING_INDEX(remaining_director, ',', 1)) + 2) AS remaining_director
+        FROM
+            cte
+        WHERE
+            remaining_director > ''
+    )
+    SELECT DISTINCT
+        title,
+        TRIM(DataItem) AS director
+    FROM
+        cte
+    ORDER BY
+        title;
+
+"""
+
 CREATE_GENRES_DB_SQL = """
     CREATE TABLE dashboard.genres AS 
     WITH RECURSIVE cte AS (
@@ -246,6 +310,21 @@ ALTER_GENRES_DB_SQL = """
     ADD FOREIGN KEY (title) REFERENCES movies(title);
 """
 
+ALTER_COUNTRY_DB_SQL = """
+    ALTER TABLE countries
+    MODIFY country VARCHAR(255),
+    ADD PRIMARY KEY (title, country),
+    ADD FOREIGN KEY (title) REFERENCES movies(title);
+"""
+
+ALTER_DIRECTOR_DB_SQL = """
+    ALTER TABLE directors
+    MODIFY director VARCHAR(255),
+    ADD PRIMARY KEY (title, director),
+    ADD FOREIGN KEY (title) REFERENCES movies(title);
+"""
+
+
 CREATE_QUERIES_DW = [CREATE_CASTS_TABLE_SQL,CREATE_FINANCE_TABLE_SQL,CREATE_RATINGS_TABLE_SQL]
 DROP_QUERIES_DW = [
     "DROP TABLE IF EXISTS movies_casts;",
@@ -253,16 +332,18 @@ DROP_QUERIES_DW = [
     "DROP TABLE IF EXISTS movies_finance;"
 ]
 
-CREATE_QUERIES_DB = [CREATE_MOVIES_DB_SQL, CREATE_GENRES_DB_SQL, CREATE_ACTORS_DB_SQL] ## Order matters here
+CREATE_QUERIES_DB = [CREATE_MOVIES_DB_SQL, CREATE_GENRES_DB_SQL, CREATE_ACTORS_DB_SQL, CREATE_COUNTRY_DB_SQL, CREATE_DIRECTOR_DB_SQL] ## Order matters here
 DROP_QUERIES_DB = [
-    "DROP TABLE IF EXISTS movies;",
     "DROP TABLE IF EXISTS genres;",
-    "DROP TABLE IF EXISTS actors;"
-]
+    "DROP TABLE IF EXISTS actors;",
+    "DROP TABLE IF EXISTS countries;",
+    "DROP TABLE IF EXISTS directors;",
+    "DROP TABLE IF EXISTS movies;"
+] # Order matters here 
+ALTER_QUERIES_DB = [ALTER_MOVIES_DB_SQL,ALTER_ACTORS_DB_SQL,ALTER_GENRES_DB_SQL, ALTER_COUNTRY_DB_SQL, ALTER_DIRECTOR_DB_SQL] ## Order matters here
 
 CREATE_QUERIES_ML = [CREATE_MOVIES_ML_SQL]
 DROP_QUERIES_ML = [
     "DROP TABLE IF EXISTS movies;",
 ]
 
-ALTER_QUERIES_DB = [ALTER_MOVIES_DB_SQL,ALTER_ACTORS_DB_SQL,ALTER_GENRES_DB_SQL] ## Order matters here
