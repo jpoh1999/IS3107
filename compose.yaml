@@ -87,6 +87,13 @@ x-airflow-common:
       condition: service_healthy
 
 services:
+  mlflow-server:
+    build:
+      context: .
+      dockerfile: Dockerfile.mlflow
+    ports:
+      - "5000:5000"
+
   postgres:
     image: postgres:13
     environment:
