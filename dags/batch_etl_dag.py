@@ -7,7 +7,7 @@ from helpers.dataengineer import ingest
 from helpers.dummyops import start, end, datawarehouse_etl_start, await_tasks
 
 from helpers.ml import etl_ml;
-from dags.helpers.operations import etl_dashboard;
+from helpers.operations import etl_dashboard;
 
 from database.warehouse import *
 from database.lake import *
