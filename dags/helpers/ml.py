@@ -131,6 +131,7 @@ def one_hot_encoding() :
 
     df_combined = pd.concat(combined_df, axis=1)
     df_combined.drop(columns=cat_cols, inplace=True)
+    df_combined.drop(columns=["revenue","roi"], inplace=True) ## knowing these variables directly tell us profitability of the movie so we drop
     
     df_combined.set_index('title', inplace=True) # set the title as the index
 
@@ -287,6 +288,12 @@ def stage_ml(X_filepaths : list, **context) :
 def data_preparation() :
     """
         Task group for preparing data for ML Training
+
+        Intermediate files for each processes are stored 
+        to ensure data lineage
+        This ensures processes are easily recoverable 
+        in the event of a broken connection or bugs
+
     """
     x_filepath = one_hot_encoding()
     x_splitpath = tt_split(x_filepath, 0.2)
