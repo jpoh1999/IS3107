@@ -30,9 +30,11 @@ default_args = {
 def batch_etl() :
     """
         Author : James Poh Hao
-        Co-author : Wei Han, Jiayi, Shan Yi, Mei Lin
+        
+        Co-authors : Wei Han, Jiayi, Shan Yi, Mei Lin
 
         Tag: Batch etl for the movies analytic company
+
         Description : As film production is costly, 
         it is crucial to create a movie that appeals to the majority of the audience 
         so that the film production company can maximize their profits. 
@@ -46,9 +48,11 @@ def batch_etl() :
     def data_engineer() :
         """
             Task group for data engineers
+
             It does the following :
             a. Group ingestion for the different data sources
             b. Download files parallelly to save time
+            c.
         """
         ingests = []
         

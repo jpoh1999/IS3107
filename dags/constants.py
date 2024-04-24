@@ -35,7 +35,7 @@ CREDENTIALS = "/home/airflow/.google/credentials.json"
 # ------ OS PATHS ------ #
 DATA_DIR = "/opt/airflow/data"
 TEMP_DIR = "/opt/airflow/tmp"
-
+GS_ML_DIR = "ml/data"
 # ------ METADATA FOR DATASETS ------ #
 # metadata e.g : 
 # name_table_in_sql : {

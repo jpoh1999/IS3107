@@ -30,6 +30,21 @@ def create_bucket(bucket_name : str):
     bucket = client.create_bucket(bucket_name)
     logging.info('Bucket {} created'.format(bucket.name))
 
+def upload_string_blob(bucket_name, file_string, file_name) :
+    """
+        Uploads a dataframe directly into gcs bucket
+    """
+
+    client = storage.Client.from_service_account_json(
+        CREDENTIALS
+    )
+
+    # The bucket on GCS in which to write the CSV file
+    bucket = client.bucket(bucket_name)
+    # The name assigned to the CSV file on GCS
+    blob = bucket.blob(file_name)
+    blob.upload_from_string(file_string)
+
 def upload_blob(bucket_name, source_file_name, destination_blob_name):
     """Uploads a file to the bucket. 
     Taken from : https://cloud.google.com/storage/docs/ 
