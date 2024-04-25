@@ -1,5 +1,8 @@
 
 # Set-up
+
+Generate a service key from gcp and save it under the directory .google/ as "credentials.json"
+
 ```bash
 git clone https://github.com/jpoh1999/IS3107/
 
@@ -10,6 +13,10 @@ docker compose up airflow-init
 
 docker compose up -d
 ```
+
+There is also a python configuration file in which you can edit your SQL connections. 
+
+<img width="1224" alt="image" src="https://github.com/jpoh1999/IS3107/assets/157945682/2a0b8dbb-5c51-4235-ac61-bb523aa1f43b">
 
 # Teardown
 ```bash
