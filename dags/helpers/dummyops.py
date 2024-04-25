@@ -35,8 +35,8 @@ def await_tasks():
     """
     pass
 
-@task(task_id = "datawarehouse_etl_start")
-def datawarehouse_etl_start() :
+@task(task_id = "datawarehouse")
+def datawarehouse() :
     """
         Dummy Operator for Datawarehouse staging
     """

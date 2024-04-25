@@ -4,7 +4,7 @@ from datetime import datetime
 from constants import *
 
 from helpers.dataengineer import ingest
-from helpers.dummyops import start, end, datawarehouse_etl_start, await_tasks
+from helpers.dummyops import start, end, datawarehouse, await_tasks
 
 from helpers.ml import etl_ml, data_preparation, ml_ops
 from helpers.operations import etl_dashboard;
@@ -90,7 +90,7 @@ def batch_etl() :
         start() >> etl_ml() >> data_preparation() >> ml_ops() >> end()
 
 
-    data_engineer() >> datawarehouse_etl_start() >> [operations(), machine_learning()]
+    data_engineer() >> datawarehouse() >> [operations(), machine_learning()]
 
 
 
